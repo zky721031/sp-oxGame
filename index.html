@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- css -->
+  <link rel="stylesheet" href="./css/main.css" />
+  <!-- vue cdn-->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>OX-GAME</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="block_area">
+      <div class="block" v-for="(b,bid) in blocks" :class="{circle: b.type==1,cross: b.type==-1}" @click="player_go(b)">
+        <div class="small_num">{{bid+1}}</div>
+      </div>
+    </div>
+    <ul class="debug_list">
+      <li v-for="wdata in pattern_data">{{wdata.pattern}}: {{wdata.value}}</li>
+    </ul><br />
+    <h1>{{who_win}}</h1>
+    <div class="block turn_block" :class="{circle: turn==1,cross: turn==-1}" @click="player_go(b)"></div>
+    <div class="btn" v-if="who_win.length!=0" @click="restart">Restart</div>
+  </div>
+</body>
+<script src="./js/main.js"></script>
+
+</html>
